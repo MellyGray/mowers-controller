@@ -1,0 +1,19 @@
+# Gradle
+.gradle
+build
+src/build
+bin
+src/bin
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Vscode
+.vscode
+
+# Some logs
+var/log/*
+!var/log/.gitkeep
+
+# Customers photos folder
+customers-photos
