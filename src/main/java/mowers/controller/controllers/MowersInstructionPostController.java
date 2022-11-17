@@ -1,12 +1,8 @@
 package mowers.controller.controllers;
 
-import java.security.Principal;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,8 +20,9 @@ public final class MowersInstructionPostController {
 
     @PostMapping(value = "/mowers/move")
     public ResponseEntity<String> move(@RequestBody Request request) {
+        System.out.println(request.instruction());
         MowersFinalPositionDTO mowers = controller.move(new MowersInstructionDTO(request.instruction()));
-
+        
         return new ResponseEntity<String>(mowers.finalPosition(), HttpStatus.OK);
     }
 }

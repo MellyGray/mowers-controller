@@ -1,25 +1,14 @@
-package mowers.controller.application;
+package mowers.controller.domain;
 
-import java.util.List;
-import java.util.stream.Collectors;
+public final class Mower {
+    private String finalPosition;
 
-import mowers.controller.domain.Mower;
-
-public final class MowersFinalPositionDTO {
-    private final String finalPosition;
-
-    public MowersFinalPositionDTO(String finalPosition) {
+    public Mower(String finalPosition) {
         this.finalPosition = finalPosition;
     }
 
     public String finalPosition() {
         return finalPosition;
-    }
-
-    public static MowersFinalPositionDTO fromAggregates(List<Mower> mowers) {
-        String finalPosition = mowers.stream().map(mower -> mower.finalPosition()).collect(Collectors.joining("\n"));
-
-        return new MowersFinalPositionDTO(finalPosition);
     }
 
     @Override
@@ -38,7 +27,7 @@ public final class MowersFinalPositionDTO {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        MowersFinalPositionDTO other = (MowersFinalPositionDTO) obj;
+        Mower other = (Mower) obj;
         if (finalPosition == null) {
             if (other.finalPosition != null)
                 return false;
