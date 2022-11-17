@@ -1,5 +1,5 @@
 package mowers.controller.application;
 
-public final class MowerController {
+public final class MowersFinalPositionDTO {
     
 }

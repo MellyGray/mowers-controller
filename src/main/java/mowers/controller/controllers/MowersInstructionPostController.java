@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import mowers.controller.application.MowerController;
-import mowers.controller.application.MowersDTO;
+import mowers.controller.application.MowersController;
+import mowers.controller.application.MowersFinalPositionDTO;
 import mowers.controller.application.MowersInstructionDTO;
 
 @RestController
 public final class MowersInstructionPostController {
-    private MowerController controller;
+    private MowersController controller;
 
-    public MowersInstructionPostController(MowerController controller) {
+    public MowersInstructionPostController(MowersController controller) {
         this.controller = controller;
     }
 
     @PostMapping(value = "/mowers/move")
     public ResponseEntity<String> move(@RequestBody Request request) {
-        MowersDTO mowers = controller.move(new MowersInstructionDTO(request.instruction()));
+        MowersFinalPositionDTO mowers = controller.move(new MowersInstructionDTO(request.instruction()));
 
         return new ResponseEntity<String>(mowers.finalPosition(), HttpStatus.OK);
     }
