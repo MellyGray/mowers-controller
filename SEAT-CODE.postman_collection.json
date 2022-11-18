@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "a73ee283-7913-4f3e-b35c-cdb2af7385b7",
+		"name": "SEAT:CODE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23249181"
+	},
+	"item": [
+		{
+			"name": "New mowers intruction",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"instruction\":\"5 5\\n1 2 N\\nLMLMLMLMM\\n3 3 E\\nMMRMMRMRRM\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8030/mowers/move",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8030",
+					"path": [
+						"mowers",
+						"move"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
