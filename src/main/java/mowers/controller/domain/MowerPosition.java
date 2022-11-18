@@ -28,7 +28,7 @@ public final class MowerPosition {
 
         Integer xPosition = Integer.parseInt(instructionArray[0]);
         Integer yPosition = Integer.parseInt(instructionArray[1]);
-        String cardinalPoint = instructionArray.length == 2 ? "ANY" : instructionArray[2];
+        String cardinalPoint = instructionArray.length == 2 ? MowerCardinalPoint.ANY.value() : instructionArray[2];
 
         return new MowerPosition(xPosition, yPosition, cardinalPoint);
     }
