@@ -44,9 +44,14 @@ Then run the following commands:
  To test the API manually you can use the postman collection included SEAT-CODE.postman_collection.json.
 
  Remember that the docker port would be http://localhost:8030 and the local host is http://localhost:8080 you will need to change it in postman depending on how you are running the application.
+ 
+ ![image](https://user-images.githubusercontent.com/23359572/202798337-e2a3ac58-a0da-4201-a0a9-bd7dc586670b.png)
+
 
 ## TODO
 
 Implement Tableau limit exception
+
 Generate logs
+
 Validate Intruction String
