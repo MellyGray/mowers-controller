@@ -35,8 +35,8 @@ public class MowersControllerTest {
         doReturn(mowers).when(tableau).mowers();
 
         String instruction = "5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM";
-        MowersFinalPositionDTO expecteMowersResponse = new MowersFinalPositionDTO("1 3 N\n5 1 E");
-        MowersFinalPositionDTO mowersResponse = controller
+        MowersCurrentPositionDTO expecteMowersResponse = new MowersCurrentPositionDTO("1 3 N\\n5 1 E");
+        MowersCurrentPositionDTO mowersResponse = controller
                 .move(new InstructionDTO(instruction));
 
         verify(tableau, atLeastOnce()).runInstruction(Instruction.fromInstructionString(instruction));

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import mowers.controller.application.MowersController;
-import mowers.controller.application.MowersFinalPositionDTO;
+import mowers.controller.application.MowersCurrentPositionDTO;
 import mowers.controller.application.InstructionDTO;
 
 @RestController
@@ -20,9 +20,9 @@ public final class MowersInstructionPostController {
 
     @PostMapping(value = "/mowers/move")
     public ResponseEntity<String> move(@RequestBody Request request) {
-        MowersFinalPositionDTO mowers = controller.move(new InstructionDTO(request.instruction()));
+        MowersCurrentPositionDTO mowers = controller.move(new InstructionDTO(request.instruction()));
         
-        return new ResponseEntity<String>(mowers.finalPosition(), HttpStatus.OK);
+        return new ResponseEntity<String>(mowers.currentPosition(), HttpStatus.OK);
     }
 }
 

@@ -15,7 +15,7 @@ public class InstructionTest {
         mowersInstructions.add(new MowerInstruction(MowerPosition.fromInstructionLine("1 2 N"), "LMLMLMLMM"));
         mowersInstructions.add(new MowerInstruction(MowerPosition.fromInstructionLine("3 3 E"), "MMRMMRMRRM"));
 
-        Instruction instructionExpected = new Instruction(new MowerPosition(5, 5, MowerCardinalPoint.ANY.value()),
+        Instruction instructionExpected = new Instruction(new MowerPosition(5, 5, new NCardinalPoint()),
                 mowersInstructions);
 
         assertEquals(instructionExpected, Instruction.fromInstructionString(instruction));

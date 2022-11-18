@@ -8,8 +8,8 @@ public class MowerPositionTest {
     @Test
     void convert_from_instruction_line_to_mower_position() {
         String instructionLine = "3 3 E";
-        MowerPosition mowerPositionExpected = new MowerPosition(3, 3, "E");
-
+        MowerPosition mowerPositionExpected = new MowerPosition(3, 3, new ECardinalPoint());
+        
         assertEquals(mowerPositionExpected, MowerPosition.fromInstructionLine(instructionLine));
     }
 }

@@ -29,7 +29,7 @@ public abstract class RequestTestCase {
             String expectedResponse) throws Exception {
         ResultMatcher response = expectedResponse.isEmpty()
                 ? content().string("")
-                : content().json(expectedResponse);
+                : content().string(expectedResponse);
 
         mockMvc
                 .perform(request(HttpMethod.valueOf(method), endpoint).content(body).contentType(APPLICATION_JSON))

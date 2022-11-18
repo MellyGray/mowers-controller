@@ -13,9 +13,9 @@ public final class MowersController {
         this.tableau = tableau;
     }
 
-    public MowersFinalPositionDTO move(InstructionDTO request) {
+    public MowersCurrentPositionDTO move(InstructionDTO request) {
         tableau.runInstruction(Instruction.fromInstructionString(request.instruction()));
 
-        return MowersFinalPositionDTO.fromAggregates(tableau.mowers());
+        return MowersCurrentPositionDTO.fromAggregates(tableau.mowers());
     }
 }

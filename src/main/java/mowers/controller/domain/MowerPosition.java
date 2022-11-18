@@ -3,9 +3,9 @@ package mowers.controller.domain;
 public final class MowerPosition {
     private Integer xPosition;
     private Integer yPosition;
-    private String cardinalPoint;
+    private CardinalPoint cardinalPoint;
 
-    public MowerPosition(Integer xPosition, Integer yPosition, String cardinalPoint) {
+    public MowerPosition(Integer xPosition, Integer yPosition, CardinalPoint cardinalPoint) {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
         this.cardinalPoint = cardinalPoint;
@@ -19,8 +19,20 @@ public final class MowerPosition {
         return yPosition;
     }
 
-    public String cardinalPoint() {
+    public CardinalPoint cardinalPoint() {
         return cardinalPoint;
+    }
+
+    public void setxPosition(Integer xPosition) {
+        this.xPosition = xPosition;
+    }
+
+    public void setyPosition(Integer yPosition) {
+        this.yPosition = yPosition;
+    }
+
+    public void setCardinalPoint(CardinalPoint cardinalPoint) {
+        this.cardinalPoint = cardinalPoint;
     }
 
     public static MowerPosition fromInstructionLine(String instructionLine) {
@@ -28,9 +40,51 @@ public final class MowerPosition {
 
         Integer xPosition = Integer.parseInt(instructionArray[0]);
         Integer yPosition = Integer.parseInt(instructionArray[1]);
-        String cardinalPoint = instructionArray.length == 2 ? MowerCardinalPoint.ANY.value() : instructionArray[2];
+
+        CardinalPoint cardinalPoint = new NCardinalPoint();
+
+        if (instructionArray.length == 3) {
+            if (instructionArray[2].equals(MowerCardinalPoint.N.value())) {
+                cardinalPoint = new NCardinalPoint();
+            }
+            if (instructionArray[2].equals(MowerCardinalPoint.S.value())) {
+                cardinalPoint = new SCardinalPoint();
+            }
+            if (instructionArray[2].equals(MowerCardinalPoint.E.value())) {
+                cardinalPoint = new ECardinalPoint();
+            }
+            if (instructionArray[2].equals(MowerCardinalPoint.W.value())) {
+                cardinalPoint = new WCardinalPoint();
+            }
+        }
 
         return new MowerPosition(xPosition, yPosition, cardinalPoint);
+    }
+
+
+    public void move(String move) {
+        if (move.equals("M")) {
+            moveM();
+        }
+        if (move.equals("L")) {
+            moveL();
+        }
+        if (move.equals("R")) {
+            moveR();
+        }
+    }
+
+    private void moveM() {
+        this.xPosition = cardinalPoint.movexPosition(xPosition);
+        this.yPosition = cardinalPoint.moveyPosition(yPosition);
+    }
+
+    private void moveL() {
+        this.cardinalPoint = cardinalPoint.previous();
+    }
+
+    private void moveR() {
+        this.cardinalPoint = cardinalPoint.next();
     }
 
     @Override

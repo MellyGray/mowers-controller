@@ -3,12 +3,12 @@ package mowers.controller.domain;
 public final class Mower {
     private MowerPosition limitPosition;
     private MowerPosition initialPosition;
-    private MowerPosition finalPosition;
+    private MowerPosition currentPosition;
 
     public Mower(MowerPosition limitPosition, MowerPosition initialPosition) {
         this.limitPosition = limitPosition;
         this.initialPosition = initialPosition;
-        this.finalPosition = initialPosition;
+        this.currentPosition = initialPosition;
     }
 
     public MowerPosition limitPosition() {
@@ -19,12 +19,20 @@ public final class Mower {
         return initialPosition;
     }
 
-    public MowerPosition finalPosition() {
-        return finalPosition;
+    public MowerPosition currentPosition() {
+        return currentPosition;
     }
 
-    public void run(String movement){
-        //TODO - run mower
+    public void run(String movement) {
+        if (movement.length() == 0) {
+            return;
+        }
+
+        String move = String.valueOf(movement.charAt(0));
+
+        currentPosition.move(move);
+
+        run(movement.substring(1));
     }
 
     @Override
@@ -33,7 +41,7 @@ public final class Mower {
         int result = 1;
         result = prime * result + ((limitPosition == null) ? 0 : limitPosition.hashCode());
         result = prime * result + ((initialPosition == null) ? 0 : initialPosition.hashCode());
-        result = prime * result + ((finalPosition == null) ? 0 : finalPosition.hashCode());
+        result = prime * result + ((currentPosition == null) ? 0 : currentPosition.hashCode());
         return result;
     }
 
@@ -56,10 +64,10 @@ public final class Mower {
                 return false;
         } else if (!initialPosition.equals(other.initialPosition))
             return false;
-        if (finalPosition == null) {
-            if (other.finalPosition != null)
+        if (currentPosition == null) {
+            if (other.currentPosition != null)
                 return false;
-        } else if (!finalPosition.equals(other.finalPosition))
+        } else if (!currentPosition.equals(other.currentPosition))
             return false;
         return true;
     }

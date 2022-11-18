@@ -5,7 +5,7 @@ public enum MowerCardinalPoint {
     N("N"),
     E("E"),
     S("S"),
-    W("W"),;
+    W("W");
 
     private String value;
 
