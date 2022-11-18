@@ -20,7 +20,6 @@ public final class MowersInstructionPostController {
 
     @PostMapping(value = "/mowers/move")
     public ResponseEntity<String> move(@RequestBody Request request) {
-        System.out.println(request.instruction());
         MowersFinalPositionDTO mowers = controller.move(new InstructionDTO(request.instruction()));
         
         return new ResponseEntity<String>(mowers.finalPosition(), HttpStatus.OK);

@@ -14,7 +14,6 @@ public final class MowersController {
     }
 
     public MowersFinalPositionDTO move(InstructionDTO request) {
-        System.out.println(Instruction.fromInstructionString(request.instruction()).limitPosition());
         tableau.runInstruction(Instruction.fromInstructionString(request.instruction()));
 
         return MowersFinalPositionDTO.fromAggregates(tableau.mowers());
