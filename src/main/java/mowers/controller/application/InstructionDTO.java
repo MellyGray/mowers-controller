@@ -1,9 +1,9 @@
 package mowers.controller.application;
 
-public final class MowersInstructionDTO {
+public final class InstructionDTO {
     private final String instruction;
 
-    public MowersInstructionDTO(String instruction) {
+    public InstructionDTO(String instruction) {
         this.instruction = instruction;
     }
 
@@ -27,7 +27,7 @@ public final class MowersInstructionDTO {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        MowersInstructionDTO other = (MowersInstructionDTO) obj;
+        InstructionDTO other = (InstructionDTO) obj;
         if (instruction == null) {
             if (other.instruction != null)
                 return false;

@@ -17,7 +17,8 @@ public final class MowersFinalPositionDTO {
     }
 
     public static MowersFinalPositionDTO fromAggregates(List<Mower> mowers) {
-        String finalPosition = mowers.stream().map(mower -> mower.finalPosition()).collect(Collectors.joining("\n"));
+        String finalPosition = mowers.stream().map(mower -> mower.finalPosition().toString())
+                .collect(Collectors.joining("\n"));
 
         return new MowersFinalPositionDTO(finalPosition);
     }

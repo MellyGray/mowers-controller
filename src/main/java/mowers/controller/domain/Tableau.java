@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface Tableau {
-    public List<Mower> runInstruction(String instruction);
+    public List<Mower> runInstruction(Instruction instruction);
 
     public List<Mower> mowers();
 }
